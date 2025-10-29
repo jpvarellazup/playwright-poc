@@ -25,3 +25,15 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Clone target repo, copy file and commit
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git clone https://x-access-token:${GH_TOKEN}@github.com/jpvarellazup/meu-repo-test.git
+        cp test-results.json meu-repo-test/
+        cd meu-repo-test
+        git add file.json
+        git commit -m "Add file.json from workflow"
+        git push origin main    
