@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --project=chromium
     - name: Clone target repo, copy file and commit
       if: always()
       env:
@@ -27,7 +27,7 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         git clone https://x-access-token:${GH_TOKEN}@github.com/jpvarellazup/meu-repo-test.git
-        cp test-results.json meu-repo-test/
+        cp test-results.json meu-repo-test/docutest
         cd meu-repo-test
         git add .
         git commit -m "Add file.json from workflow"
