@@ -29,6 +29,6 @@ jobs:
         git clone https://x-access-token:${GH_TOKEN}@github.com/jpvarellazup/meu-repo-test.git
         cp test-results.json meu-repo-test/
         cd meu-repo-test
-        git add file.json
+        git add .
         git commit -m "Add file.json from workflow"
         git push origin main    
